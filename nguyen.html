@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./nguyen.css">
+</head>
+<body>
+    
+    <div class="main-container">
+        <div class="centerColumn">
+            <div class="centerColumn-header"> <i class="fa fa-home" aria-hidden="true"></i> Task</div>
+            <div class="centerColumn-content">
+                
+                  
+                  <ul id="myUL">
+                    <li>Hit the gym</li>
+                    <li class="checked">Pay bills</li>
+                    <li>Meet George</li>
+                    <li>Buy eggs</li>
+                    <li>Read a book</li>
+                    <li>Organize office</li>
+                  </ul>
+    
+                  <div id="myDIV" class="header">
+                    <!-- <h2 style="margin:5px">My To Do List</h2> -->
+                    <input type="text" class="addTask" id="myInput" placeholder="Title...">
+                    <span onclick="newElement()" class="addBtn">Add</span>
+                  </div>
+            </div>
+        </div>
+        <div class="leftColumn">
+            <input type="text" placeholder="addNote" class="idNote" name='add-note'/>
+            <button type="submit" class="cursor-pointer">Add file</button>
+             <div class="history">
+                 <span class="create">create 21 minutes <button class="button delete">delete<i class="fa fa-trash" aria-hidden="true"></i></button></span>
+             </div>
+        </div>
+    </div>
+
+</body>
+<script src="./index.js"></script>
+</html>
