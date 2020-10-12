@@ -10,7 +10,7 @@
 .centerColumn {
     width: 70%;
     height: 100vh;
-    background-color: rgb(95,115,193);
+    background-color: #5F73C2;
 }
 .centerColumn-header {
     height: 110px;
@@ -22,17 +22,11 @@
 .centerColumn-content {
     display: flex;
     flex-direction: column;
+    position: relative;
     padding-left: 55px;
-    width: 80%;
+    width: 752px;
 }
-.centerColumn-content .taskItem {
-    height: 68px;
-    width: 731px;
-    background-color: white;
-    border-top: 1px solid  rgb(95,115,193);
-    border-radius: 5px;
-    margin-bottom: 2px;
-}
+
 
 ///////////////////////////////////////////////
 
@@ -46,6 +40,7 @@ ul {
   ul li {
     margin-bottom: 2px;
     border-radius: 5px;
+    width: 100%;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -108,6 +103,10 @@ ul {
   
   /* Style the header */
   .header {
+    position: absolute;
+    top: 393px;
+    width:649px;
+    height: 50px;
     color: white;
     text-align: center;
   }
@@ -122,20 +121,27 @@ ul {
   /* Style the input */
   .centerColumn .centerColumn-content .addTask 
   {
-      background-color: rgb(33 51 118);
+    background-color:#586CB7;
     margin: 0;
     border: none;
+    border-color: white;
     border-radius: 0;
-    width: 75%;
+    width: 593px;
+    height: 100%;
     padding: 10px;
     float: left;
     font-size: 16px;
   }
-  
+  .centerColumn .centerColumn-content .addTask::placeholder {
+    color: white;
+    padding-left: 5px;
+  }
   /* Style the "Add" button */
   .addBtn {
     padding: 10px;
-    width: 25%;
+    width: 56px;
+    height: 100%;
+    
     background: #d9d9d9;
     color: #555;
     float: left;
