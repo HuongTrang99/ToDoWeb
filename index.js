@@ -1,55 +1,46 @@
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+window.onload = () => {
+  var firebaseConfig = {
+      apiKey: "AIzaSyDAtNk8VNMI3WMLHdJK5_R70ZHwhFkyqSg",
+      authDomain: "todoapp-576e8.firebaseapp.com",
+      databaseURL: "https://todoapp-576e8.firebaseio.com",
+      projectId: "todoapp-576e8",
+      storageBucket: "todoapp-576e8.appspot.com",
+      messagingSenderId: "1022767435245",
+      appId: "1:1022767435245:web:249f2eb891b87c5a83ebe4"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+          model.currentUser = {
+              displayName: user.displayName,
+              email: user.email
+          }
+          if (user.emailVerified) {
+              view.setActiveScreen('toDoPage')
+          } else {
+              alert('Please')
+              firebase.auth().signOut()
+              if(window.matchMedia('(max-width:600px)').matches){
+                  view.setActiveScreen('mobileSignIn')
+              }else{
+                  view.setActiveScreen('registerPage')}
+          }
+      } else {
+          if(window.matchMedia('(max-width:600px)').matches){
+              view.setActiveScreen('mobileSignIn')
+          }else{
+          view.setActiveScreen('registerPage')}
+      }
+  })
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+  var uploader = document.getElementById('uploader');
+  var fileButton = document.getElementById('fileButton');
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
+  // bat su kien chon file
+  
+  fileButton.addEventListener('change', function(e){
+      var file = e.target.files[0];
+      var storageRef= firebase.storage().ref('sweet_gifs/'+file.name);
+      storageRef.put(file);
+  });
 }

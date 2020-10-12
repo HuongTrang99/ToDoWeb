@@ -13,7 +13,7 @@
         <div class="centerColumn">
             <div class="centerColumn-header"> <i class="fa fa-home" aria-hidden="true"></i> Task</div>
             <div class="centerColumn-content">
-                  <ul id="myUL">
+                  <ul class="taskContent" id="myUL">
                     <li>Hit the gym</li>
                     <li class="checked">Pay bills</li>
                     <li>Meet George</li>
@@ -30,8 +30,9 @@
             </div>
         </div>
         <div class="leftColumn">
-            <input type="text" placeholder="addNote" class="idNote" name='add-note'/>
-            <button type="submit" class="cursor-pointer">Add file</button>
+            <input type="text" placeholder="Add Note" class="idNote" name='add-note'/>
+            <progress value="0" max="100" id="updloader">%</progress>
+            <input type="file" value="upload" id="fileButton" />
              <div class="history">
                  <span class="create">create 21 minutes <button class="button delete">delete<i class="fa fa-trash" aria-hidden="true"></i></button></span>
              </div>
@@ -40,4 +41,5 @@
 
 </body>
 <script src="./index.js"></script>
+<script src="./temp.js"></script>
 </html>
